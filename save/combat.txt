@@ -1,0 +1,15 @@
+Passive: Passive
+Speed: Speed
+Brawn: Brawn
+Magic: magic
+Armor: Armor
+Health: Health
+Passive1: Passive1
+Passive2: Passive 2
+Passive3: Passive 3
+Passive4: Passive 4
+Health1: Health 1
+Health2: Health 2
+Health3: Health 3
+Health4: Health 4
+

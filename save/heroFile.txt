@@ -1,0 +1,29 @@
+Career: Career
+Name: Name
+Path: Path
+Cloak: Cloak
+Head: Hat
+Gloves: Gloves
+MainHand: Mainhand
+Chest: Chest
+LeftHand: Lefthand
+Talisman: Talisman
+Feet: Feet
+Crowns: Crowns
+Speed: Speed
+Brawn: Brawn
+Magic: Magic
+Armor: Armor
+Health: Health
+Necklace: Necklace
+LeftRing: LeftRing
+RightRing: RightRing
+ABSpeed: Speed
+Combat: Combat
+Passive: Passive
+Modifier: Modifier
+BackpackOne: Slot 1
+BackpackTwo: Slot 2
+BackpackThree: Slot 3
+BackpackFour: Slot 4
+BackpackFive: Slot 5
