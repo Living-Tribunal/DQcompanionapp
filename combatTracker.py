@@ -23,7 +23,6 @@ def combatTrackerSheet():
         
 #================ Button to kill the program on "Combat Tracker" window 
     exitButton = Button(combatTrackerWindow, image = Images.Images["backArrowImage"], highlightthickness = 0, bd = 0, command = combatTrackerWindow.destroy)
-    exitButton.pack()
 
 #================ Adjusting the position of the exit button on "Combat Tracker" window 
     exitButton.place(relx = 0.040, rely = 0.0, anchor = NE)
@@ -68,10 +67,14 @@ def combatTrackerSheet():
             else:
                 heroPassiveText.set("Passive")
             heroPassive.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 30
+
         heroPassive = Toplevel()
         heroPassive.title("Passive")
         heroPassive.geometry("250x50")
-        entry = Entry(heroPassive)
+        validateCmd = heroPassive.register(validateInput)
+        entry = Entry(heroPassive, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(heroPassive, text="Submit", command=onSubmit)
         submit.pack()
@@ -98,10 +101,14 @@ def combatTrackerSheet():
             else:
                 heroSpeedText.set("Speed")
             heroSpeed.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 3
+
         heroSpeed = Toplevel()
         heroSpeed.title("Speed")
         heroSpeed.geometry("250x50")
-        entry = Entry(heroSpeed)
+        validateCmd = heroSpeed.register(validateInput)
+        entry = Entry(heroSpeed, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(heroSpeed, text="Submit", command=onSubmit)
         submit.pack()
@@ -128,10 +135,13 @@ def combatTrackerSheet():
             else:
                 heroBrawnText.set("Brawn")
             heroBrawn.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 3
         heroBrawn = Toplevel()
         heroBrawn.title("Brawn")
         heroBrawn.geometry("250x50")
-        entry = Entry(heroBrawn)
+        validateCmd = heroBrawn.register(validateInput)
+        entry = Entry(heroBrawn, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(heroBrawn, text="Submit", command=onSubmit)
         submit.pack()
@@ -158,10 +168,13 @@ def combatTrackerSheet():
             else:
                 heroMagicText.set("Magic")
             heroMagic.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 3
         heroMagic = Toplevel()
         heroMagic.title("Magic")
         heroMagic.geometry("250x50")
-        entry = Entry(heroMagic)
+        validateCmd = heroMagic.register(validateInput)
+        entry = Entry(heroMagic, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(heroMagic, text="Submit", command=onSubmit)
         submit.pack()
@@ -188,10 +201,13 @@ def combatTrackerSheet():
             else:
                 heroArmorText.set("Armor")
             heroArmor.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 3
         heroArmor = Toplevel()
         heroArmor.title("Armor")
         heroArmor.geometry("250x50")
-        entry = Entry(heroArmor)
+        validateCmd = heroArmor.register(validateInput)
+        entry = Entry(heroArmor, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(heroArmor, text="Submit", command=onSubmit)
         submit.pack()
@@ -218,10 +234,13 @@ def combatTrackerSheet():
             else:
                 heroHealthText.set("Health")
             heroHealth.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 3
         heroHealth = Toplevel()
         heroHealth.title("Health")
         heroHealth.geometry("250x50")
-        entry = Entry(heroHealth)
+        validateCmd = heroHealth.register(validateInput)
+        entry = Entry(heroHealth, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(heroHealth, text="Submit", command=onSubmit)
         submit.pack()
@@ -248,16 +267,19 @@ def combatTrackerSheet():
             else:
                 oppPassiveOneText.set("Passive 1")
             oppPassiveOne.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
         oppPassiveOne = Toplevel()
         oppPassiveOne.title("Passive 1")
         oppPassiveOne.geometry("250x50")
-        entry = Entry(oppPassiveOne)
+        validateCmd = oppPassiveOne.register(validateInput)
+        entry = Entry(oppPassiveOne, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppPassiveOne, text="Submit", command=onSubmit)
         submit.pack()
         
     oppPassiveOneText = StringVar()
-    oppPassiveOneText.set("Passive1")
+    oppPassiveOneText.set("Passive 1")
     oppPassiveOneFrame = Frame(combatTrackerWindow, highlightthickness = 0, bd = 3, background= "white", relief = FLAT)
     oppPassiveOneButton = Button(oppPassiveOneFrame, highlightthickness = 0, font = ("Trajan Pro", 18, "bold"), fg = "white", bg = "#191919", textvariable = oppPassiveOneText, command = updateOppPassiveOne, relief = FLAT, width = 10, height = 3, wraplength = 250)
     oppPassiveOneFrame.place(relx = 0.22, rely = 0.23)
@@ -278,10 +300,13 @@ def combatTrackerSheet():
             else:
                 oppPassiveTwoText.set("Passive 2")
             oppPassiveTwo.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
         oppPassiveTwo = Toplevel()
         oppPassiveTwo.title("Passive 2")
         oppPassiveTwo.geometry("250x50")
-        entry = Entry(oppPassiveTwo)
+        validateCmd = oppPassiveTwo.register(validateInput)
+        entry = Entry(oppPassiveTwo, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppPassiveTwo, text="Submit", command=onSubmit)
         submit.pack()
@@ -306,12 +331,15 @@ def combatTrackerSheet():
                 with open("save\combat.txt", "w") as f:
                     f.writelines(lines)
             else:
-                oppPassiveThreeText.set("Passive3")
+                oppPassiveThreeText.set("Passive 3")
             oppPassiveThree.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
         oppPassiveThree = Toplevel()
         oppPassiveThree.title("Passive 3")
         oppPassiveThree.geometry("250x50")
-        entry = Entry(oppPassiveThree)
+        validateCmd = oppPassiveThree.register(validateInput)
+        entry = Entry(oppPassiveThree, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppPassiveThree, text="Submit", command=onSubmit)
         submit.pack()
@@ -338,10 +366,13 @@ def combatTrackerSheet():
             else:
                 oppPassiveFourText.set("Passive 4")
             oppPassiveFour.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
         oppPassiveFour = Toplevel()
         oppPassiveFour.title("Passive 4")
         oppPassiveFour.geometry("250x50")
-        entry = Entry(oppPassiveFour)
+        validateCmd = oppPassiveFour.register(validateInput)
+        entry = Entry(oppPassiveFour, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppPassiveFour, text="Submit", command=onSubmit)
         submit.pack()
@@ -369,10 +400,14 @@ def combatTrackerSheet():
             else:
                 oppHealthOneText.set("Health 1")
             oppHealthOne.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 5
+        
         oppHealthOne = Toplevel()
         oppHealthOne.title("Health 1")
         oppHealthOne.geometry("250x50")
-        entry = Entry(oppHealthOne)
+        validateCmd = oppHealthOne.register(validateInput)
+        entry = Entry(oppHealthOne, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppHealthOne, text="Submit", command=onSubmit)
         submit.pack()
@@ -399,10 +434,14 @@ def combatTrackerSheet():
             else:
                 oppHealthTwoText.set("Health 2")
             oppHealthTwo.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 5
+        
         oppHealthTwo = Toplevel()
         oppHealthTwo.title("Health 2")
         oppHealthTwo.geometry("250x50")
-        entry = Entry(oppHealthTwo)
+        validateCmd = oppHealthTwo.register(validateInput)
+        entry = Entry(oppHealthTwo, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppHealthTwo, text="Submit", command=onSubmit)
         submit.pack()
@@ -429,10 +468,14 @@ def combatTrackerSheet():
             else:
                 oppHealthThreeText.set("Health 3")
             oppHealthThree.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 5
+        
         oppHealthThree = Toplevel()
         oppHealthThree.title("Health 3")
         oppHealthThree.geometry("250x50")
-        entry = Entry(oppHealthThree)
+        validateCmd = oppHealthThree.register(validateInput)
+        entry = Entry(oppHealthThree, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppHealthThree, text="Submit", command=onSubmit)
         submit.pack()
@@ -460,10 +503,14 @@ def combatTrackerSheet():
             else:
                 oppHealthFourText.set("Health 4")
             oppHealthFour.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 5
+        
         oppHealthFour = Toplevel()
         oppHealthFour.title("Health 4")
         oppHealthFour.geometry("250x50")
-        entry = Entry(oppHealthFour)
+        validateCmd = oppHealthFour.register(validateInput)
+        entry = Entry(oppHealthFour, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(oppHealthFour, text="Submit", command=onSubmit)
         submit.pack()
