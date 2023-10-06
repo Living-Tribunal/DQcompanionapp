@@ -25,7 +25,6 @@ def openYourHero():
     
 #================ Button to kill the program on Hero sheet Window
     exitButton = Button(yourHero, image = Images.Images["backArrowImage"], highlightthickness = 0, bd = 0, command = yourHero.destroy)
-    exitButton.pack()
 #================ Adjusting the position of the exit button on Hero sheet window     
     exitButton.place(relx = 0.040, rely = 0.0, anchor = NE)
 
@@ -72,12 +71,17 @@ def openYourHero():
 #=============== if entry it emptpy, the buttons name is returtned to nameText, in this case its Name
                 nameText.set("Name")
             name.destroy()
+            
+        def validateInput(entryText):
+#================= Checks to see if my inputs are letters or spaces in the entryText field. Also sets the limit of characters allowed in the entry field.            
+            return all(char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 20
 #=============== creates a new window for the submit button
         name = Toplevel()
 #=============== window name, resoultion, and with an entry box        
         name.title("Name")
         name.geometry("200x50")
-        entry = Entry(name)
+        validateCmd = name.register(validateInput)
+        entry = Entry(name, validate="key", validatecommand=(validateCmd, '%P'))
 #=============== packs entry to parent       
         entry.pack()
 #=============== creates a submit button        
@@ -114,7 +118,7 @@ def openYourHero():
         def validateInput(entryText):
 #================= Checks to see if my inputs are letters or spaces in the entryText field. Also sets the limit of characters allowed in the entry field.            
             return all(char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 20
-
+        
         career = Toplevel()
         career.title("Career")
         career.geometry("250x50")
@@ -146,11 +150,14 @@ def openYourHero():
             else:
                 pathText.set("Path")
             path.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
 
         path = Toplevel()
         path.title("Path")
         path.geometry("250x50")
-        entry = Entry(path)
+        validateCmd = path.register(validateInput)
+        entry = Entry(path, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(path, text="Submit", command=onSubmit)
         submit.pack()
@@ -177,10 +184,14 @@ def openYourHero():
             else:
                 cloakText.set("Cloak")
             cloak.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         cloak = Toplevel()
         cloak.title("Cloak")
         cloak.geometry("250x50")
-        entry = Entry(cloak)
+        validateCmd = cloak.register(validateInput)
+        entry = Entry(cloak, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(cloak, text="Submit", command=onSubmit)
         submit.pack()
@@ -207,16 +218,20 @@ def openYourHero():
             else:
                 headText.set("Head")
             head.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         head = Toplevel()
-        head.title("Head")
+        head.title("Cloak")
         head.geometry("250x50")
-        entry = Entry(head)
+        validateCmd = head.register(validateInput)
+        entry = Entry(head, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(head, text="Submit", command=onSubmit)
         submit.pack()
         
     headText = StringVar()
-    headText.set("Head")
+    headText.set("Cloak")
     headFrame = Frame(yourHero, highlightthickness = 0, bd = 3, background= "white", relief = FLAT)
     headButton = Button(headFrame, highlightthickness = 0, font = ("Trajan Pro", 19, "bold"), fg = "white", bg = "#191919", textvariable = headText, command = updateHead, relief = FLAT, width = 10, height = 5, wraplength=150)
     headFrame.place(relx = 0.26, rely = 0.08)
@@ -237,10 +252,15 @@ def openYourHero():
             else:
                 glovesText.set("Gloves")
             gloves.destroy()
+        
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         gloves = Toplevel()
         gloves.title("Gloves")
         gloves.geometry("250x50")
-        entry = Entry(gloves)
+        validateCmd = gloves.register(validateInput)
+        entry = Entry(gloves, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(gloves, text="Submit", command=onSubmit)
         submit.pack()
@@ -267,10 +287,14 @@ def openYourHero():
             else:
                 mainHandText.set("Main Hand")
             mainHand.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         mainHand = Toplevel()
         mainHand.title("Main Hand")
         mainHand.geometry("250x50")
-        entry = Entry(mainHand)
+        validateCmd = mainHand.register(validateInput)
+        entry = Entry(mainHand, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(mainHand, text = "Submit", command = onSubmit)
         submit.pack()
@@ -297,10 +321,14 @@ def openYourHero():
             else:
                 chestText.set("Chest")
             chest.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         chest = Toplevel()
         chest.title("Chest")
         chest.geometry("250x50")
-        entry = Entry(chest)
+        validateCmd = chest.register(validateInput)
+        entry = Entry(chest, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(chest, text = "Submit", command = onSubmit)
         submit.pack()
@@ -327,10 +355,14 @@ def openYourHero():
             else:
                 leftHandText.set("Left Hand")
             leftHand.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         leftHand = Toplevel()
         leftHand.title("Left Hand")
         leftHand.geometry("250x50")
-        entry = Entry(leftHand, bg= "white", fg = "#191919")
+        validateCmd = leftHand.register(validateInput)
+        entry = Entry(leftHand, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(leftHand, text = "Submit", command = onSubmit)
         submit.pack()
@@ -357,10 +389,14 @@ def openYourHero():
             else:
                 talismanText.set("Talisman")
             talisman.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         talisman = Toplevel()
         talisman.title("Talisman")
         talisman.geometry("250x50")
-        entry = Entry(talisman, bg = "white", fg = "#191919")
+        validateCmd = talisman.register(validateInput)
+        entry = Entry(talisman, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(talisman, text = "Submit", command = onSubmit)
         submit.pack()
@@ -387,10 +423,15 @@ def openYourHero():
             else:
                 feetText.set("Feet")
             feet.destroy()
+        def validateInput(entryText):
+            return all(char.isalpha() or char.isspace() or char.isdigit() for char in entryText) and len(entryText) <= 20
+
         feet = Toplevel()
         feet.title("Feet")
         feet.geometry("250x50")
-        entry = Entry(feet, bg = "white", fg = "#191919")
+        validateCmd = feet.register(validateInput)
+        entry = Entry(feet, validate="key", validatecommand=(validateCmd, '%P'))
+        
         entry.pack()
         sumbit = Button(feet, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -417,10 +458,14 @@ def openYourHero():
             else:
                 moneyText.set("Money Pouch")
             money.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 3
+
         money = Toplevel()
-        money.title("Money Pouch")
+        money.title("Money")
         money.geometry("250x50")
-        entry = Entry(money, bg = "white", fg = "#191919")
+        validateCmd = money.register(validateInput)
+        entry = Entry(money, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(money, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -449,7 +494,7 @@ def openYourHero():
             speed.destroy()
             
         def validateInput(entryText):
-            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 2
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 2
             
         speed = Toplevel()
         speed.title("Speed")
@@ -483,7 +528,7 @@ def openYourHero():
                 brawnText.set("Brawn")
             brawn.destroy()
         def validateInput(entryText):
-            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 2
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 2
         
         brawn = Toplevel()
         brawn.title("Brawn")
@@ -517,7 +562,7 @@ def openYourHero():
                 magicText.set("Magic")
             magic.destroy()
         def validateInput(entryText):
-            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 2
+            return all(char.isdigit()for char in entryText) and len(entryText) <= 2
         
         magic = Toplevel()
         magic.title("Magic")
@@ -551,7 +596,7 @@ def openYourHero():
                 armorText.set("Armor")
             armor.destroy()
         def validateInput(entryText):
-            return all(char.isdigit() or char.isspace() for char in entryText) and len(entryText) <= 2
+            return all(char.isdigit()for char in entryText) and len(entryText) <= 2
         
         armor = Toplevel()
         armor.title("Armor")
@@ -584,10 +629,14 @@ def openYourHero():
             else:
                 healthText.set("Health")
             health.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() for char in entryText) and len(entryText) <= 3
+
         health = Toplevel()
         health.title("Health")
         health.geometry("250x50")
-        entry = Entry(health)
+        validateCmd = health.register(validateInput)
+        entry = Entry(health, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(health, text = "Submit", command = onSubmit)
         submit.pack()
@@ -614,10 +663,14 @@ def openYourHero():
             else:
                 necklaceText.set("Necklace")
             necklace.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 20
+
         necklace = Toplevel()
         necklace.title("Necklace")
         necklace.geometry("250x50")
-        entry = Entry(necklace, bg = "white", fg = "#191919")
+        validateCmd = necklace.register(validateInput)
+        entry = Entry(necklace, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(necklace, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -644,10 +697,14 @@ def openYourHero():
             else:
                 ringLeftText.set("Left Ring")
             ringLeft.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 20
+
         ringLeft = Toplevel()
-        ringLeft.title("Left ring")
+        ringLeft.title("left Ring")
         ringLeft.geometry("250x50")
-        entry = Entry(ringLeft, bg = "white", fg = "#191919")
+        validateCmd = ringLeft.register(validateInput)
+        entry = Entry(ringLeft, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(ringLeft, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -674,10 +731,14 @@ def openYourHero():
             else:
                 ringRightText.set("Right Ring")
             ringRight.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 20
+
         ringRight = Toplevel()
-        ringRight.title("Right ring")
+        ringRight.title("Right Ring")
         ringRight.geometry("250x50")
-        entry = Entry(ringRight, bg = "white", fg = "#191919")
+        validateCmd = ringRight.register(validateInput)
+        entry = Entry(ringRight, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(ringRight, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -704,10 +765,14 @@ def openYourHero():
             else:
                 abilitySpeedText.set("Speed")
             abilitySpeed.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 30
+
         abilitySpeed = Toplevel()
         abilitySpeed.title("Speed")
         abilitySpeed.geometry("250x50")
-        entry = Entry(abilitySpeed, bg = "white", fg = "#191919")
+        validateCmd = abilitySpeed.register(validateInput)
+        entry = Entry(abilitySpeed, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(abilitySpeed, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -734,10 +799,14 @@ def openYourHero():
             else:
                 abilityCombatText.set("Combat")
             abilityCombat.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 30
+
         abilityCombat = Toplevel()
         abilityCombat.title("Combat")
         abilityCombat.geometry("250x50")
-        entry = Entry(abilityCombat, bg = "white", fg = "#191919")
+        validateCmd = abilityCombat.register(validateInput)
+        entry = Entry(abilityCombat, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(abilityCombat, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -764,10 +833,14 @@ def openYourHero():
             else:
                 abilityPassiveText.set("Passive")
             abilityPassive.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 30
+
         abilityPassive = Toplevel()
         abilityPassive.title("Passive")
         abilityPassive.geometry("250x50")
-        entry = Entry(abilityPassive, bg = "white", fg = "#191919")
+        validateCmd = abilityPassive.register(validateInput)
+        entry = Entry(abilityPassive, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(abilityPassive, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -794,10 +867,14 @@ def openYourHero():
             else:
                 abilityModifierText.set("Modifier")
             abilityModifier.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 30
+
         abilityModifier = Toplevel()
         abilityModifier.title("Modifier")
         abilityModifier.geometry("250x50")
-        entry = Entry(abilityModifier, bg = "white", fg = "#191919")
+        validateCmd = abilityModifier.register(validateInput)
+        entry = Entry(abilityModifier, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         sumbit = Button(abilityModifier, text = "Submit", command = onSubmit)
         sumbit.pack()
@@ -824,10 +901,14 @@ def openYourHero():
             else:
                 backpackOneText.set("Slot 1")
             backpackOne.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
+
         backpackOne = Toplevel()
         backpackOne.title("Slot 1")
         backpackOne.geometry("250x50")
-        entry = Entry(backpackOne)
+        validateCmd = backpackOne.register(validateInput)
+        entry = Entry(backpackOne, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(backpackOne, text="Submit", command = onSubmit)
         submit.pack()
@@ -835,7 +916,7 @@ def openYourHero():
     backpackOneText = StringVar()
     backpackOneText.set("Slot 1")
     backpackOneFrame = Frame(yourHero, highlightthickness = 0, bd = 3, background= "white", relief = FLAT)
-    backpackOneButton = Button(backpackOneFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackOneText, command = updateBackpackOne, relief = FLAT, width = 8, height = 4, wraplength = 200)
+    backpackOneButton = Button(backpackOneFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackOneText, command = updateBackpackOne, relief = FLAT, width = 8, height = 4, wraplength = 150)
     backpackOneFrame.place(relx = 0.190, rely = 0.83)
     backpackOneButton.pack(pady=(0,.5))
 
@@ -854,10 +935,14 @@ def openYourHero():
             else:
                 backpackTwoText.set("Slot 2")
             backpackTwo.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
+
         backpackTwo = Toplevel()
         backpackTwo.title("Slot 2")
         backpackTwo.geometry("250x50")
-        entry = Entry(backpackTwo)
+        validateCmd = backpackTwo.register(validateInput)
+        entry = Entry(backpackTwo, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(backpackTwo, text="Submit", command=onSubmit)
         submit.pack()
@@ -865,7 +950,7 @@ def openYourHero():
     backpackTwoText = StringVar()
     backpackTwoText.set("Slot 2")
     backpackTwoFrame = Frame(yourHero, highlightthickness = 0, bd = 3, background= "white", relief = FLAT)
-    backpackTwoButton = Button(backpackTwoFrame, highlightthickness = 0, font = ("Trajan Pro", 20 , "bold"), fg = "white", bg = "#191919", textvariable = backpackTwoText, command = updateBackpackTwo, relief = FLAT, width = 8, height = 4, wraplength = 200)
+    backpackTwoButton = Button(backpackTwoFrame, highlightthickness = 0, font = ("Trajan Pro", 20 , "bold"), fg = "white", bg = "#191919", textvariable = backpackTwoText, command = updateBackpackTwo, relief = FLAT, width = 8, height = 4, wraplength = 150)
     backpackTwoFrame.place(relx = 0.280, rely = 0.83)
     backpackTwoButton.pack(pady=(0,.5))
 
@@ -884,10 +969,14 @@ def openYourHero():
             else:
                 backpackThreeText.set("Slot 3")
             backpackThree.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
+
         backpackThree = Toplevel()
         backpackThree.title("Slot 3")
         backpackThree.geometry("250x50")
-        entry = Entry(backpackThree)
+        validateCmd = backpackThree.register(validateInput)
+        entry = Entry(backpackThree, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(backpackThree, text="Submit", command=onSubmit)
         submit.pack()       
@@ -895,7 +984,7 @@ def openYourHero():
     backpackThreeText = StringVar()
     backpackThreeText.set("Slot 3")
     backpackThreeFrame = Frame(yourHero, highlightthickness = 0, bd = 3, background= "white", relief = FLAT)
-    backpackThreeButton = Button(backpackThreeFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackThreeText, command = updateBackpackThree, relief = FLAT, width = 8, height = 4, wraplength = 200)
+    backpackThreeButton = Button(backpackThreeFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackThreeText, command = updateBackpackThree, relief = FLAT, width = 8, height = 4, wraplength = 150)
     backpackThreeFrame.place(relx = 0.371, rely = 0.83)
     backpackThreeButton.pack(pady=(0,.5))
     
@@ -914,10 +1003,14 @@ def openYourHero():
             else:
                 backpackFourText.set("Slot 4")
             backpackFour.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
+
         backpackFour = Toplevel()
         backpackFour.title("Slot 4")
         backpackFour.geometry("250x50")
-        entry = Entry(backpackFour)
+        validateCmd = backpackFour.register(validateInput)
+        entry = Entry(backpackFour, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(backpackFour, text="Submit", command=onSubmit)
         submit.pack()        
@@ -925,7 +1018,7 @@ def openYourHero():
     backpackFourText = StringVar()
     backpackFourText.set("Slot 4")
     backpackFourFrame = Frame(yourHero, highlightthickness = 0, bd = 3, background= "white", relief = FLAT)
-    backpackFourButton = Button(backpackFourFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackFourText, command = updateBackpackFour, relief = FLAT, width = 8, height = 4, wraplength = 200)
+    backpackFourButton = Button(backpackFourFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackFourText, command = updateBackpackFour, relief = FLAT, width = 8, height = 4, wraplength = 150)
     backpackFourFrame.place(relx = 0.461, rely = 0.83)
     backpackFourButton.pack(pady=(0,.5))
     
@@ -944,10 +1037,14 @@ def openYourHero():
             else:
                 backpackFiveText.set("Slot 5")
             backpackFive.destroy()
+        def validateInput(entryText):
+            return all(char.isdigit() or char.isalpha() or char.isspace() for char in entryText) and len(entryText) <= 10
+
         backpackFive = Toplevel()
         backpackFive.title("Slot 5")
         backpackFive.geometry("250x50")
-        entry = Entry(backpackFive)
+        validateCmd = backpackFive.register(validateInput)
+        entry = Entry(backpackFive, validate="key", validatecommand=(validateCmd, '%P'))
         entry.pack()
         submit = Button(backpackFive, text="Submit", command=onSubmit)
         submit.pack()
@@ -955,7 +1052,7 @@ def openYourHero():
     backpackFiveText = StringVar()
     backpackFiveText.set("Slot 5")
     backpackFiveFrame = Frame(yourHero, highlightthickness = 0, bd = 3, background= "white", relief = FLAT)
-    backpackFiveButton = Button(backpackFiveFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackFiveText, command = updateBackpackFive, relief = FLAT, width = 8, height = 4, wraplength = 200)
+    backpackFiveButton = Button(backpackFiveFrame, highlightthickness = 0, font = ("Trajan Pro", 20, "bold"), fg = "white", bg = "#191919", textvariable = backpackFiveText, command = updateBackpackFive, relief = FLAT, width = 8, height = 4, wraplength = 150)
     backpackFiveFrame.place(relx = 0.551, rely = 0.83)
     backpackFiveButton.pack(pady=(0,.5))
     
