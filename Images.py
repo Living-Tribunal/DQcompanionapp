@@ -1,4 +1,14 @@
 
+'''
+DQ - Images
+Author: Cody Dalton
+Date: 10/12/2023
+
+Purpose: This module is used to hold all of the needed images and lists of images
+to be used in the main DQ program.
+
+'''
+
 #================ imports needed libraries
 from PIL import Image, ImageTk
 import random
