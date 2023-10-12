@@ -1,3 +1,14 @@
+'''
+DQ - Dice Roll
+Author: Cody Dalton
+Date: 10/12/2023
+
+Purpose: This module is used to populate the dice roll window.
+Each of dice faces are imported as an image and set to randomly
+change when the button is clicked. All of this happens with the random module
+
+'''
+
 from tkinter import *
 from tkinter import font, Tk
 from PIL import ImageTk, Image
