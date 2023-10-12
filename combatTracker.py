@@ -1,13 +1,25 @@
+'''
+DQ - Combat Tracker
+Author: Cody Dalton
+Date: 10/12/2023
+
+Purpose: This module is used to populate the combat tracker window. 
+Stats for the Hero and their opponent are tracked here as well as
+having a handy-dandy dice roller avaliable if the player so wishes it. There are 
+multiple boxes for each round of combat with an opponent.
+
+'''
+
+
 #================ imports needed libraries
 from tkinter import *
-from tkinter import font, Tk
-from PIL import ImageTk, Image
-import random
+from tkinter import messagebox
 import Images
 import diceroll
 
 def onButtonClick():
     diceroll.showDice()
+
 #================ Sets resolution, icon, and windowtitle
 def combatTrackerSheet():
     combatTrackerWindow = Toplevel()
@@ -50,7 +62,31 @@ def combatTrackerSheet():
     combatTrackerBannerLabel = Label(combatTrackerBannerFrame, highlightthickness = 0, font = ("Steelworks Vintage Demo", 50, "bold"), text = "Combat Tracker", fg = "#191919", bg = "white", relief = FLAT, width = 20, height = 1)
     combatTrackerBannerFrame.place(relx = 0.5, rely = 0.07, anchor= CENTER) 
     combatTrackerBannerLabel.pack(pady = (0,.5))
+
+    """ 
+    enemiesOut=StringVar(combatTrackerWindow)
+    enemiesOut.set("Output")
     
+    enemiesList = ['Vampire', 
+           'Werewolf \n Sp: 1 Ar: 2, HP: 25', 
+           'Zombie', 
+           'Dragon', 
+           'Giant Spider', 
+           'Goblin', 
+           'Orc', 
+           'Skeleton Warrior \n Sp: 1 Ar: 2, HP: 25']
+    options = StringVar(combatTrackerWindow)
+    options.set("Enemies")
+    with open('save\enemies.txt', 'w') as f:
+        for enemy in enemiesList:
+            f.write("%s\n" % enemy)
+    
+    enemiesMenu = OptionMenu(combatTrackerWindow, options, *enemiesList)
+    enemiesMenu.configure(font = ("Trajan Pro", 80, "bold"), fg = "white", bg = "#191919")
+    menu = (combatTrackerWindow.nametowidget(enemiesMenu.menuname))
+    menu.configure(font = ("Trajan Pro", 40, "bold"), fg = "white", bg = "#191919")   
+    enemiesMenu.place(relx = 0, rely = 0.60) """
+
 #================ See comments on heroSheet. All of this does the same thing as over there.     
     def updateHeroPassive():
         def onSubmit():
