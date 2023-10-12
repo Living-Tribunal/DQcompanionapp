@@ -1,3 +1,15 @@
+'''
+Destiny Quest Companion App
+Author: Cody Dalton
+Date: 10/12/2023
+
+Purpose: This program is to replace the pen-and-paper hero sheet for the 
+adventure book Destiny Quest: Legion of Shadows. All of the heros stats, gear, and inventory can
+be entered (and saved) here
+
+
+'''
+
 #================ imports needed libraries
 from tkinter import *
 from tkinter import Tk
@@ -36,11 +48,10 @@ def main():
 
 #================ Button to kill the program on main window
     exitButton = Button(root, image = Images.Images["backArrowImage"], highlightthickness = 0, bd = 0, command = exit)
-    exitButton.pack()
 #================ Adjusting the position of the exit button on main window
     exitButton.place(relx = 0.040, rely = 0.0, anchor = NE)
     
     root.mainloop()
 
-if __name__ == "__main__":
+if __name__ == "__main__":     
     main()
