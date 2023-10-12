@@ -1,3 +1,15 @@
+'''
+DQ - Hero Sheet
+Author: Cody Dalton
+Date: 10/12/2023
+
+Purpose: This module is used to populate the Hero sheet window.
+All of the players Heros' stats are tracked here as well as inventory and their
+acquired gear.
+
+'''
+
+
 #================ imports needed libraries
 from tkinter import *
 from tkinter import font, Tk
